@@ -3,10 +3,15 @@ from analyzers import analyze
 from deck_parser import parse_deck
 from deck_builder import build_deck, make_variant, compile_profile_checks
 
-PASTE_DECK = False
-METHOD = "exact"
-TRIALS = 1_000_000
-ACTIVE_PROFILE = "spy_combo"
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#SETTINGS BEGIN
+PASTE_DECK = False #False or True
+METHOD = "exact" #"exact" or "simulation"
+TRIALS = 1_000_000 #any number, low end PC's should set to 100_000
+ACTIVE_PROFILE = "spy_combo" #change profile to use, currently no others implemented,
+                            #if you have added your own, change here
+#SETTINGS END
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 profile = PROFILES[ACTIVE_PROFILE]
 
