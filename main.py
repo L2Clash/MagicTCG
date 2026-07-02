@@ -22,16 +22,17 @@ names = profile["check_names"]
 compiled_checks = compile_profile_checks(profile, cat)
 
 manual_decks = [
-    make_variant("4 lands, 0 petal", {"forest": 3, "swamp": 1, "petal": 0}, profile, cat),
-    make_variant("4 lands, 1 petal", {"forest": 3, "swamp": 1, "petal": 1}, profile, cat),
+    #make_variant("4 lands, 0 petal", {"forest": 3, "swamp": 1, "petal": 0}, profile, cat),
+    #make_variant("4 lands, 1 petal", {"forest": 3, "swamp": 1, "petal": 1}, profile, cat),
     make_variant("4 lands, 2 petal", {"forest": 3, "swamp": 1, "petal": 2}, profile, cat),
-    make_variant("4 lands, 3 petal", {"forest": 3, "swamp": 1, "petal": 3}, profile, cat),
-    make_variant("4 lands, 4 petal", {"forest": 3, "swamp": 1, "petal": 4}, profile, cat),
-    make_variant("5 lands, 0 petal", {"forest": 4, "swamp": 1, "petal": 0}, profile, cat),
-    make_variant("5 lands, 1 petal", {"forest": 4, "swamp": 1, "petal": 1}, profile, cat),
-    make_variant("5 lands, 2 petal", {"forest": 4, "swamp": 1, "petal": 2}, profile, cat),
-    make_variant("5 lands, 3 petal", {"forest": 4, "swamp": 1, "petal": 3}, profile, cat),
-    make_variant("5 lands, 4 petal", {"forest": 4, "swamp": 1, "petal": 4}, profile, cat),
+    make_variant("4 lands, 2 petal", {"forest": 3, "swamp": 1, "petal": 1, "troll": 2}, profile, cat),
+    #make_variant("4 lands, 3 petal", {"forest": 3, "swamp": 1, "petal": 3}, profile, cat),
+    #make_variant("4 lands, 4 petal", {"forest": 3, "swamp": 1, "petal": 4}, profile, cat),
+    #make_variant("5 lands, 0 petal", {"forest": 4, "swamp": 1, "petal": 0}, profile, cat),
+    #make_variant("5 lands, 1 petal", {"forest": 4, "swamp": 1, "petal": 1}, profile, cat),
+   # make_variant("5 lands, 2 petal", {"forest": 4, "swamp": 1, "petal": 2}, profile, cat),
+    #make_variant("5 lands, 3 petal", {"forest": 4, "swamp": 1, "petal": 3}, profile, cat),
+    #make_variant("5 lands, 4 petal", {"forest": 4, "swamp": 1, "petal": 4}, profile, cat),
 ]
 
 def analyze_deck(name, deck):
