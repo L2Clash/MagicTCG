@@ -57,12 +57,14 @@ def contains(check, counts): #Returns True if the hand validates any of the chec
             if counts[card] < amount:
                 return False
     for card, amount in maximums:
-        if isinstance(card, tuple):
+        if isinstance(card, tuple) and card[0] == "distinct":
+            raise ValueError("distinct checks should only be used in minimums")
+        elif isinstance(card, tuple):
             if sum(counts[c] for c in card) > amount:
                 return False
-            else:
-                if counts[card] > amount:
-                    return False
+        else:
+            if counts[card] > amount:
+                return False
     return True
 
 def exact_sample(deck, compiled_checks, hand_size=7): #Uses hypergeometric distribution to compute

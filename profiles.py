@@ -119,12 +119,14 @@ PROFILES = { #Defines differences between deck archetypes,
         "checks": [
             ({"forest":1, "sagu/ent":1}, {}),
             ({"forest":1, "distinct:saruli:saruli/one-drop/quirion": 1}, {}),
-            ({"forest":2},{})
+            ({"forest":2},{}),
+            ({"forest":1, "quirion":1},{"forest":1, "quirion":1, "one-drop":0,"sagu/ent":0})
         ],
         "check_names": [
             "Forest + LandCycler",
             "Forest + Saruli + One Drop",
-            "Two Forests Minimum"
+            "Two Forests Minimum",
+            "Risky Keep"
         ],
     }
 }

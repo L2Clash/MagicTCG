@@ -12,7 +12,7 @@ TRIALS = 1_000_000 #any number, low end PC's should set to 100_000
 ACTIVE_PROFILE = "wall_combo" #change profile to use, currently no others implemented,
                             #if you have added your own, change here
 DECK_SIZE = 61 #Deck size
-HAND_SIZE = 8 #Opening hand size
+HAND_SIZE = 7 #Opening hand size
 #SETTINGS END
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
