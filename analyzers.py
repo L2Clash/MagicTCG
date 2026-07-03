@@ -140,12 +140,12 @@ def sim_sample(deck, compiled_checks, trials, hand_size): #Monte Carlo simulatio
 
     return keep_rate, mulligan_rate, check_hits
 
-def analyze(deck, compiled_checks, method, trials): #Provides check for which method to analyze
+def analyze(deck, compiled_checks, method, trials, hand_size): #Provides check for which method to analyze
     if method == "simulation":
-        return sim_sample(deck, compiled_checks, trials)
+        return sim_sample(deck, compiled_checks, trials, hand_size)
 
     elif method == "exact":
-        return exact_sample(deck, compiled_checks)
+        return exact_sample(deck, compiled_checks, hand_size)
 
     else:
         raise ValueError(f"Unknown method '{method}'")
