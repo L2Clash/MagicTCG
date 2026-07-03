@@ -8,7 +8,7 @@ from deck_builder import build_deck, make_variant, compile_profile_checks
 PASTE_DECK = False #False or True
 METHOD = "exact" #"exact" or "simulation"
 TRIALS = 1_000_000 #any number, low end PC's should set to 100_000
-ACTIVE_PROFILE = "spy_combo" #change profile to use, currently no others implemented,
+ACTIVE_PROFILE = "wall_combo" #change profile to use, currently no others implemented,
                             #if you have added your own, change here
 #SETTINGS END
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22,15 +22,16 @@ names = profile["check_names"]
 compiled_checks = compile_profile_checks(profile, cat)
 
 manual_decks = [
+    make_variant("Wall Combo", {}, profile, cat)
     #make_variant("4 lands, 0 petal", {"forest": 3, "swamp": 1, "petal": 0}, profile, cat),
     #make_variant("4 lands, 1 petal", {"forest": 3, "swamp": 1, "petal": 1}, profile, cat),
     #make_variant("4 lands, 2 petal", {"forest": 3, "swamp": 1, "petal": 2}, profile, cat),
-    make_variant("4 lands, 1 petal, 1 troll", {"forest": 3, "swamp": 1, "petal": 1, "troll": 1}, profile, cat),
+    #make_variant("4 lands, 1 petal, 1 troll", {"forest": 3, "swamp": 1, "petal": 1, "troll": 1}, profile, cat),
     #make_variant("4 lands, 3 petal", {"forest": 3, "swamp": 1, "petal": 3}, profile, cat),
     #make_variant("4 lands, 4 petal", {"forest": 3, "swamp": 1, "petal": 4}, profile, cat),
     #make_variant("5 lands, 0 petal", {"forest": 4, "swamp": 1, "petal": 0}, profile, cat),
     #make_variant("5 lands, 1 petal", {"forest": 4, "swamp": 1, "petal": 1}, profile, cat),
-   # make_variant("5 lands, 2 petal", {"forest": 4, "swamp": 1, "petal": 2}, profile, cat),
+    #make_variant("5 lands, 2 petal", {"forest": 4, "swamp": 1, "petal": 2}, profile, cat),
     #make_variant("5 lands, 3 petal", {"forest": 4, "swamp": 1, "petal": 3}, profile, cat),
     #make_variant("5 lands, 4 petal", {"forest": 4, "swamp": 1, "petal": 4}, profile, cat),
 ]

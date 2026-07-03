@@ -75,5 +75,52 @@ PROFILES = { #Defines differences between deck archetypes,
             "Petal + Troll",
             "Petal + Gatecreeper",
         ],
+    },
+    "wall_combo": {
+        "title": "Wall Combo",
+        "categories": {
+            "filler": 0,
+            "forest": 1,
+            "quirion": 2,
+            "saruli": 3,
+            "sagu": 4,
+            "ent": 5,
+            "one-drop": 6,
+            "creature": 7
+        },
+        "creature_categories": {
+            "creature",
+            "ent",
+            "sagu",
+            "quirion",
+            "saruli",
+            "one-drop"
+        },
+        "base_deck": {
+            "forest": 11,
+            "quirion": 4,
+            "saruli": 4,
+            "sagu": 3,
+            "ent": 3,
+            "one-drop": 5,
+        },
+        "special_cards": {
+            "Forest": "forest",
+            "Land Grant": "grant",
+            "Sagu Wildling": "sagu",
+            "Generous Ent": "ent",
+            "Quirion Ranger": "quirion",
+            "Orochi Leafcaller": "one-drop",
+            "Tinder Wall": "one-drop"
+        },
+        "target_creatures": 41,
+        "checks": [
+            ({"forest":1, "sagu/ent":1}, {}),
+            ({"forest":1, "distinct:saruli:saruli/one-drop/quirion": 1}, {})
+        ],
+        "check_names": [
+            "Forest + LandCycler",
+            "Forest + Saruli + One Drop"
+        ],
     }
 }

@@ -15,10 +15,26 @@ def compile_check(check): #Turns checks from profiles into lists to compare hand
         max_list.append((card, amount))
     return (min_list, max_list)
 
+def distinct_requirements(counts, required, group):
+    if counts[required] < 1:
+        return False
+    remaining_group_count = 0
+    for card in group:
+            if card == required:
+                remaining_group_count += max(0, counts[card] - 1)
+            else:
+                remaining_group_count += counts[card]
+    return remaining_group_count >= 1
+
 def contains(check, counts): #Returns True if the hand validates any of the checks
     minimums, maximums = check
     for card, amount in minimums:
-        if isinstance(card, tuple):
+        if isinstance(card, tuple) and card[0] == "distinct":
+            required = card[1]
+            group = card[2]
+            if not distinct_requirements(counts, required, group):
+                return False
+        elif isinstance(card, tuple):
             if sum(counts[c] for c in card) < amount:
                 return False
         else:
@@ -28,9 +44,9 @@ def contains(check, counts): #Returns True if the hand validates any of the chec
         if isinstance(card, tuple):
             if sum(counts[c] for c in card) > amount:
                 return False
-        else:
-            if counts[card] > amount:
-                return False
+            else:
+                if counts[card] > amount:
+                    return False
     return True
 
 def exact_sample(deck, compiled_checks, hand_size=7): #Uses hypergeometric distribution to compute
