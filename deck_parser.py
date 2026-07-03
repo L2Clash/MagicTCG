@@ -1,4 +1,4 @@
-def parse_deck(text, profile, cat): #Analyzes pasted decklist into maindeck and sideboard, assigning to 
+def parse_deck(text, profile, cat, DECK_SIZE): #Analyzes pasted decklist into maindeck and sideboard, assigning to 
     #categories provided. Sideboard analysis not implemented yet
     main = []
     sideboard = []
@@ -36,8 +36,8 @@ def parse_deck(text, profile, cat): #Analyzes pasted decklist into maindeck and 
             else:
                 target.extend([cat("filler")] * amount)
 
-    if len(main) != 60:
-        raise ValueError(f"Main deck has {len(main)} cards, expected 60.")
+    if len(main) != DECK_SIZE:
+        raise ValueError(f"Main deck has {len(main)} cards, expected {DECK_SIZE}.")
     if sideboard and len(sideboard) != 15:
         raise ValueError(f"Sideboard has {len(sideboard)} cards, expected 15.")
     return tuple(main), tuple(sideboard)

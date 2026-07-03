@@ -118,11 +118,13 @@ PROFILES = { #Defines differences between deck archetypes,
         "target_creatures": 41,
         "checks": [
             ({"forest":1, "sagu/ent":1}, {}),
-            ({"forest":1, "distinct:saruli:saruli/one-drop/quirion": 1}, {})
+            ({"forest":1, "distinct:saruli:saruli/one-drop/quirion": 1}, {}),
+            ({"forest":2},{})
         ],
         "check_names": [
             "Forest + LandCycler",
-            "Forest + Saruli + One Drop"
+            "Forest + Saruli + One Drop",
+            "Two Forests Minimum"
         ],
     }
 }

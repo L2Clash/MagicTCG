@@ -1,22 +1,22 @@
 from analyzers import compile_check
 
-def build_deck(deck_definition, cat, size=60): #Creates deck tuple from profile deck definition
+def build_deck(deck_definition, cat, deck_size): #Creates deck tuple from profile deck definition
     deck = []
     for category_name, amount in deck_definition.items():
         deck.extend([cat(category_name)] * amount)
-    if len(deck) > size:
-        raise ValueError(f"Deck has {len(deck)} cards, but size is only {size}.")
-    deck.extend([cat("filler")] * (size - len(deck)))
+    if len(deck) > deck_size:
+        raise ValueError(f"Deck has {len(deck)} cards, but size is only {deck_size}.")
+    deck.extend([cat("filler")] * (deck_size - len(deck)))
     return tuple(deck)
 
-def make_variant(name, changes, profile, cat, size=60): #Copies over testdeck, replaces with new imported
+def make_variant(name, changes, profile, cat, deck_size): #Copies over testdeck, replaces with new imported
     #quantities, and rebuilds
     deck_def = profile["base_deck"].copy()
 
     for category_name, new_amount in changes.items():
         deck_def[category_name] = new_amount
 
-    return name, build_deck(deck_def, cat, size)
+    return name, build_deck(deck_def, cat, deck_size)
 
 def parse_group(group, cat):
     parts = group.split("/")
