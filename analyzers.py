@@ -108,7 +108,7 @@ def exact_sample(deck, compiled_checks, hand_size=7): #Uses hypergeometric distr
 
     return keep_rate, mulligan_rate, check_hits
 
-def sim_sample(deck, compiled_checks, trials): #Monte Carlo simulation, drawing hands
+def sim_sample(deck, compiled_checks, trials, hand_size): #Monte Carlo simulation, drawing hands
     #from the deck [trials] times, and checking hand against the list of
     #checks for that deck. Slower and less accurate than exact, can later
     #be upgraded to allow simulations of turn and play after
@@ -117,7 +117,7 @@ def sim_sample(deck, compiled_checks, trials): #Monte Carlo simulation, drawing 
     check_hits = [0] * len(compiled_checks)
 
     for _ in range(trials):
-        hand = random.sample(deck, 7)
+        hand = random.sample(deck, hand_size)
         counts = [0] * (max(deck) + 1)
 
         for card in hand:

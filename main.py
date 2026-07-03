@@ -2,6 +2,7 @@ from profiles import PROFILES
 from analyzers import analyze
 from deck_parser import parse_deck
 from deck_builder import build_deck, make_variant, compile_profile_checks
+from math import comb
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #SETTINGS BEGIN
@@ -10,6 +11,7 @@ METHOD = "exact" #"exact" or "simulation"
 TRIALS = 1_000_000 #any number, low end PC's should set to 100_000
 ACTIVE_PROFILE = "spy_combo" #change profile to use, currently no others implemented,
                             #if you have added your own, change here
+HAND_SIZE = 8 #Opening hand size
 #SETTINGS END
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -37,15 +39,13 @@ manual_decks = [
 ]
 
 def analyze_deck(name, deck):
-    keep_rate, mull, keep_reasons = analyze(deck, compiled_checks, METHOD, TRIALS,)
+    keep_rate, mull, keep_reasons = analyze(deck, compiled_checks, METHOD, TRIALS, HAND_SIZE)
 
     print(f"\n{name}")
     print(f"Keep: {keep_rate:.4%}")
     print(f"Mulligan: {mull:.4f}")
 
-    from math import comb
-
-    total_keeps = keep_rate * (TRIALS if METHOD == "simulation" else comb(len(deck), 7))
+    total_keeps = keep_rate * (TRIALS if METHOD == "simulation" else comb(len(deck), HAND_SIZE))
 
     for reason, amount in zip(names, keep_reasons):
         print(f"{reason:<25}: {amount / total_keeps:.2%} of keeps")
