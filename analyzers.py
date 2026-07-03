@@ -15,16 +15,32 @@ def compile_check(check): #Turns checks from profiles into lists to compare hand
         max_list.append((card, amount))
     return (min_list, max_list)
 
+def count_group(counts, group):
+    if isinstance(group, tuple):
+        return sum(counts[c] for c in group)
+
+    return counts[group]
+
+
 def distinct_requirements(counts, required, group):
-    if counts[required] < 1:
+    if count_group(counts, required) < 1:
         return False
-    remaining_group_count = 0
-    for card in group:
-            if card == required:
-                remaining_group_count += max(0, counts[card] - 1)
-            else:
-                remaining_group_count += counts[card]
-    return remaining_group_count >= 1
+
+    # Temporarily consume one card from required.
+    if isinstance(required, tuple):
+        for card in required:
+            if counts[card] > 0:
+                counts[card] -= 1
+                result = count_group(counts, group) >= 1
+                counts[card] += 1
+                return result
+    else:
+        counts[required] -= 1
+        result = count_group(counts, group) >= 1
+        counts[required] += 1
+        return result
+
+    return False
 
 def contains(check, counts): #Returns True if the hand validates any of the checks
     minimums, maximums = check

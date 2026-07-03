@@ -66,6 +66,7 @@ PROFILES = { #Defines differences between deck archetypes,
             ({"petal": 1, "ent/sagu": 2, "creature": 1}, {}),
             ({"petal": 1, "ent/sagu": 1, "troll": 1, "creature": 1}, {}),
             ({"petal": 1, "gatecreeper": 1, "forest/grant/swamp": 1, "creature": 1}, {}),
+            ({"distinct:forest/grant:forest/grant/swamp":1}, {})
         ],
         "check_names": [
             "Land + Ent",
@@ -74,6 +75,7 @@ PROFILES = { #Defines differences between deck archetypes,
             "Petal + Double Payoff",
             "Petal + Troll",
             "Petal + Gatecreeper",
+            "Two Lands"
         ],
     },
     "wall_combo": {

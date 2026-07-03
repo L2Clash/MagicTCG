@@ -18,21 +18,27 @@ def make_variant(name, changes, profile, cat, size=60): #Copies over testdeck, r
 
     return name, build_deck(deck_def, cat, size)
 
-def parse_check_key(key, cat): #Reads tuples of cards in check, allows "ent/grant/troll" to
-    #function as an "or", or distinct to function with "distinct:x:x/y/z"
-    if key.startswith("distinct:"):
-        _, required, group = key.split(":", 2)
-        return (
-            "distinct",
-            cat(required),
-            tuple(cat(part) for part in group.split("/"))
-        )
-
-    parts = key.split("/")
+def parse_group(group, cat):
+    parts = group.split("/")
     ids = tuple(cat(part) for part in parts)
+
     if len(ids) == 1:
         return ids[0]
+
     return ids
+
+
+def parse_check_key(key, cat):
+    if key.startswith("distinct:"):
+        _, required, group = key.split(":", 2)
+
+        return (
+            "distinct",
+            parse_group(required, cat),
+            parse_group(group, cat),
+        )
+
+    return parse_group(key, cat)
 
 def compile_profile_checks(profile, cat): #Converts typed profiles into more efficient system to
     #evaluate. Allows user to input strings in profiles instead of ID numbers
